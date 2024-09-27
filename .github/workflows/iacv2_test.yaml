@@ -30,6 +30,5 @@ jobs:
              docker run --env-file env.list -v "$(pwd):/app/src" lacework/codesec-iac:latest
         env:
           LW_ACCOUNT: ${{ secrets.LW_ACCOUNT }}
-          LW_SUB_ACCOUNT: ${{ secrets.LW_SUB_ACCOUNT }}
           LW_API_KEY: ${{ secrets.LW_API_KEY }}
           LW_API_SECRET: ${{ secrets.LW_API_SECRET }}
