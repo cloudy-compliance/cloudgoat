@@ -22,8 +22,6 @@ jobs:
         run: |
              # Required to pass the GITHUB and Lacework (LW) environment secrets to use
              env | grep "GITHUB_\|LW_\|CI_" > env.list
-             # Required command based on what you want to scan in the repository
-             # echo "SCAN_COMMAND=tf-scan" >> env.list
              # WORKSPACE is required and must match, or be a subdirectory of, the directory you bind with -v in the subsequent docker command
              echo "WORKSPACE=/app/src" >> env.list
              # if we want to fail the step for any critical failed findings (violations) in the assessment scan
