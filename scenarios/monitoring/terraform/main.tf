@@ -34,3 +34,21 @@ resource "aws_security_group" "monitoring_sg" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 }
+
+resource "aws_ecs_cluster" "monitoring" {
+  name = "monitoring-cluster"
+}
+
+resource "aws_ecs_task_definition" "monitor_task" {
+  family                   = "monitor"
+  network_mode             = "host"
+  requires_compatibilities = ["EC2"]
+
+  container_definitions = jsonencode([{
+    name      = "monitor"
+    image     = "alpine:latest"
+    cpu       = 256
+    memory    = 512
+    privileged = true
+  }])
+}
